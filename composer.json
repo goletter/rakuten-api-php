@@ -1,0 +1,26 @@
+{
+    "name": "goletter/rakuten-api-php",
+    "description": "",
+    "keywords": [
+        "api",
+        "rakuten-api",
+        "rakuten"
+    ],
+    "homepage": "http://www.goletter.cn",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Goletter",
+            "homepage": "https://www.goletter.cn"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.2|^7.0"
+    },
+    "autoload": {
+        "psr-4": { "Goletter\\RakutenAPI\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Goletter\\RakutenAPI\\" : "test/" }
+    }
+}
