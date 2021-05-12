@@ -35,6 +35,7 @@ class OrdererModel implements ModelInterface, ArrayAccess
         'city' => 'string',
         'sub_address' => 'string',
         'family_name' => 'string',
+        'first_name' => 'string',
         'email_address' => 'string',
     ];
 
@@ -50,6 +51,7 @@ class OrdererModel implements ModelInterface, ArrayAccess
         'city' => null,
         'sub_address' => null,
         'family_name' => null,
+        'first_name' => null,
         'email_address' => null,
     ];
 
@@ -86,7 +88,8 @@ class OrdererModel implements ModelInterface, ArrayAccess
         'city' => 'city',
         'sub_address' => 'subAddress',
         'family_name' => 'familyName',
-        'email_address' => 'firstName',
+        'first_name' => 'firstName',
+        'email_address' => 'emailAddress',
     ];
 
     /**
@@ -101,6 +104,7 @@ class OrdererModel implements ModelInterface, ArrayAccess
         'city' => 'setCity',
         'sub_address' => 'setSubAddress',
         'family_name' => 'setFamilyName',
+        'first_name' => 'setFirstName',
         'email_address' => 'setEmailAddress',
     ];
 
@@ -116,6 +120,7 @@ class OrdererModel implements ModelInterface, ArrayAccess
         'city' => 'getCity',
         'sub_address' => 'getSubAddress',
         'family_name' => 'getFamilyName',
+        'first_name' => 'getFirstName',
         'email_address' => 'getEmailAddress',
     ];
 
@@ -181,6 +186,7 @@ class OrdererModel implements ModelInterface, ArrayAccess
         $this->container['city'] = isset($data['city']) ? $data['city'] : null;
         $this->container['sub_address'] = isset($data['sub_address']) ? $data['sub_address'] : null;
         $this->container['family_name'] = isset($data['family_name']) ? $data['family_name'] : null;
+        $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
         $this->container['email_address'] = isset($data['email_address']) ? $data['email_address'] : null;
     }
 
