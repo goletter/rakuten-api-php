@@ -4,16 +4,15 @@ namespace Goletter\RakutenAPI\Models\Orders;
 use ArrayAccess;
 use Goletter\RakutenAPI\Models\ModelInterface;
 use Goletter\RakutenAPI\ObjectSerializer;
-
 /**
- * GetOrdersResponse Class Doc Comment.
+ * ItemModelList Class Doc Comment.
  *
 
- * @description The response schema for the getOrders operation.
+ * @description A list of orders.
  *
- * @author   Stefan Neuhaus / Yahoo
+ * @author   Stefan Neuhaus / ClouSale
  */
-class GetOrdersResponse implements ModelInterface, ArrayAccess
+class ItemModelList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -22,7 +21,7 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = 'GetOrdersResponse';
+    protected static $swaggerModelName = 'ItemModelList';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -30,9 +29,10 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'payload' => '\Goletter\RakutenAPI\Models\Orders\OrdersList',
-        'pagination' => '\Goletter\RakutenAPI\Models\Orders\PaginationList',
-        'errors' => '\Goletter\RakutenAPI\Models\Orders\ErrorList',
+        'item_name' => 'string',
+        'item_number' => 'string',
+        'price' => 'string',
+        'units' => 'string',
     ];
 
     /**
@@ -41,9 +41,10 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'payload' => null,
-        'pagination' => null,
-        'errors' => null,
+        'item_name' => null,
+        'item_number' => null,
+        'price' => null,
+        'units' => null,
     ];
 
     /**
@@ -73,9 +74,10 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'payload' => 'orderNumberList',
-        'pagination' => 'PaginationResponseModel',
-        'errors' => 'MessageModelList',
+        'item_name' => 'itemName',
+        'item_number' => 'itemNumber',
+        'price' => 'price',
+        'units' => 'units',
     ];
 
     /**
@@ -84,9 +86,10 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'payload' => 'setPayload',
-        'pagination' => 'setPagination',
-        'errors' => 'setErrors',
+        'item_name' => 'setItemName',
+        'item_number' => 'setItemNumber',
+        'price' => 'setPrice',
+        'units' => 'setUnits',
     ];
 
     /**
@@ -95,9 +98,10 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'payload' => 'getPayload',
-        'pagination' => 'getPagination',
-        'errors' => 'getErrors',
+        'item_name' => 'getItemName',
+        'item_number' => 'getItemNumber',
+        'price' => 'getPrice',
+        'units' => 'getUnits',
     ];
 
     /**
@@ -110,7 +114,6 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     {
         return self::$attributeMap;
     }
-
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
@@ -157,9 +160,10 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['payload'] = isset($data['payload']) ? $data['payload'] : null;
-        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
-        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
+        $this->container['item_name'] = isset($data['item_name']) ? $data['item_name'] : null;
+        $this->container['item_number'] = isset($data['item_number']) ? $data['item_number'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['units'] = isset($data['units']) ? $data['units'] : null;
     }
 
     /**
@@ -186,71 +190,77 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets payload.
-     *
-     * @return \Goletter\RakutenAPI\Models\Orders\OrdersList
+     * @return mixed
      */
-    public function getPayload()
+    public function getItemName()
     {
-        return $this->container['payload'];
+        return $this->container['item_name'];
     }
 
     /**
-     * Sets payload.
-     *
-     * @param \Goletter\RakutenAPI\Models\Orders\OrdersList $payload payload
-     *
+     * @param $item_name
      * @return $this
      */
-    public function setPayload($payload)
+    public function setItemName($item_name)
     {
-        $this->container['payload'] = $payload;
+        $this->container['item_name'] = $item_name;
 
         return $this;
     }
 
     /**
-     * Gets pagination.
-     *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
+     * @return mixed
      */
-    public function getPagination()
+    public function getItemNumber()
     {
-        return $this->container['pagination'];
+        return $this->container['item_number'];
     }
 
     /**
-     * Sets pagination.
-     *
+     * @param $item_number
      * @return $this
      */
-    public function setPagination($pagination)
+    public function setItemNumber($item_number)
     {
-        $this->container['pagination'] = $pagination;
+        $this->container['item_number'] = $item_number;
 
         return $this;
     }
 
     /**
-     * Gets errors.
-     *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
+     * @return mixed
      */
-    public function getErrors()
+    public function getPrice()
     {
-        return $this->container['errors'];
+        return $this->container['price'];
     }
 
     /**
-     * Sets errors.
-     *
-     * @param \Goletter\RakutenAPI\Models\Orders\ErrorList $errors errors
-     *
+     * @param $price
      * @return $this
      */
-    public function setErrors($errors)
+    public function setPrice($price)
     {
-        $this->container['errors'] = $errors;
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUnits()
+    {
+        return $this->container['units'];
+    }
+
+    /**
+     * @param $units
+     * @return $this
+     */
+    public function setUnits($units)
+    {
+        $this->container['units'] = $units;
 
         return $this;
     }

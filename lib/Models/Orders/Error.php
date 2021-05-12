@@ -22,9 +22,9 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'code' => 'string',
-        'message' => 'string',
-        'details' => 'string',    ];
+        'message_type' => 'string',
+        'message_code' => 'string',
+        'message' => 'string',    ];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -32,9 +32,9 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'code' => null,
-        'message' => null,
-        'details' => null,    ];
+        'message_type' => null,
+        'message_code' => null,
+        'message' => null,    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -63,9 +63,9 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'details' => 'details',    ];
+        'message_type' => 'messageType',
+        'message_code' => 'messageCode',
+        'message' => 'message',    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
@@ -73,9 +73,10 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
+        'message_code' => 'setMessageCode',
+        'message_type' => 'setMessageType',
         'message' => 'setMessage',
-        'details' => 'setDetails',    ];
+    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests).
@@ -83,9 +84,9 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
+        'message_code' => 'getMessageCode',
         'message' => 'getMessage',
-        'details' => 'getDetails',    ];
+        'message_type' => 'getMessageType',    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -143,9 +144,9 @@ class Error implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message_code'] = isset($data['message_code']) ? $data['message_code'] : null;
+        $this->container['message_type'] = isset($data['message_type']) ? $data['message_type'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['details'] = isset($data['details']) ? $data['details'] : null;
     }
 
     /**
@@ -157,7 +158,7 @@ class Error implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if (null === $this->container['code']) {
+        if (null === $this->container['message_code']) {
             $invalidProperties[] = "'code' can't be null";
         }
         if (null === $this->container['message']) {
@@ -183,9 +184,9 @@ class Error implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getCode()
+    public function getMessageCode()
     {
-        return $this->container['code'];
+        return $this->container['message_code'];
     }
 
     /**
@@ -195,9 +196,9 @@ class Error implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setMessageCode($messageCode)
     {
-        $this->container['code'] = $code;
+        $this->container['message_code'] = $messageCode;
 
         return $this;
     }
@@ -227,25 +228,25 @@ class Error implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets details.
+     * Gets messageType.
      *
      * @return string
      */
-    public function getDetails()
+    public function getMessageType()
     {
-        return $this->container['details'];
+        return $this->container['message_type'];
     }
 
     /**
-     * Sets details.
+     * Sets messageType.
      *
      * @param string $details additional details that can help the caller understand or fix the issue
      *
      * @return $this
      */
-    public function setDetails($details)
+    public function setMessageType($messageType)
     {
-        $this->container['details'] = $details;
+        $this->container['message_type'] = $messageType;
 
         return $this;
     }

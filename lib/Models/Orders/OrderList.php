@@ -12,7 +12,7 @@ use Goletter\RakutenAPI\ObjectSerializer;
  *
  * @author   Stefan Neuhaus / ClouSale
  */
-class OrderList implements ModelInterface, ArrayAccess, IterableType
+class OrderList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -28,16 +28,14 @@ class OrderList implements ModelInterface, ArrayAccess, IterableType
      *
      * @var string[]
      */
-    protected static $swaggerTypes = [
-    ];
+    protected static $swaggerTypes = [];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
      */
-    protected static $swaggerFormats = [
-    ];
+    protected static $swaggerFormats = [];
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -65,24 +63,21 @@ class OrderList implements ModelInterface, ArrayAccess, IterableType
      *
      * @var string[]
      */
-    protected static $attributeMap = [
-    ];
+    protected static $attributeMap = [];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
-    protected static $setters = [
-    ];
+    protected static $setters = [];
 
     /**
      * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
-    protected static $getters = [
-    ];
+    protected static $getters = [];
 
     /**
      * Array of attributes where the key is the local name,
@@ -235,8 +230,8 @@ class OrderList implements ModelInterface, ArrayAccess, IterableType
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 
-    public function getSubClass()
+    public function getValue()
     {
-        return Order::class;
+        //
     }
 }

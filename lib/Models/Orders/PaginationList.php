@@ -5,15 +5,7 @@ use ArrayAccess;
 use Goletter\RakutenAPI\Models\ModelInterface;
 use Goletter\RakutenAPI\ObjectSerializer;
 
-/**
- * GetOrdersResponse Class Doc Comment.
- *
-
- * @description The response schema for the getOrders operation.
- *
- * @author   Stefan Neuhaus / Yahoo
- */
-class GetOrdersResponse implements ModelInterface, ArrayAccess
+class PaginationList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -22,7 +14,7 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = 'GetOrdersResponse';
+    protected static $swaggerModelName = 'PaginationList';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -30,10 +22,9 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'payload' => '\Goletter\RakutenAPI\Models\Orders\OrdersList',
-        'pagination' => '\Goletter\RakutenAPI\Models\Orders\PaginationList',
-        'errors' => '\Goletter\RakutenAPI\Models\Orders\ErrorList',
-    ];
+        'total_records_amount' => 'int',
+        'total_pages' => 'int',
+        'request_page' => 'int',    ];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -41,10 +32,9 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'payload' => null,
-        'pagination' => null,
-        'errors' => null,
-    ];
+        'total_records_amount' => null,
+        'total_pages' => null,
+        'request_page' => null,    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -73,10 +63,9 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'payload' => 'orderNumberList',
-        'pagination' => 'PaginationResponseModel',
-        'errors' => 'MessageModelList',
-    ];
+        'total_records_amount' => 'totalRecordsAmount',
+        'total_pages' => 'totalPages',
+        'request_page' => 'requestPage',    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
@@ -84,9 +73,9 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'payload' => 'setPayload',
-        'pagination' => 'setPagination',
-        'errors' => 'setErrors',
+        'total_records_amount' => 'setTotalRecordsAmount',
+        'total_pages' => 'setTotalPages',
+        'request_page' => 'setRequestPage',
     ];
 
     /**
@@ -95,10 +84,9 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'payload' => 'getPayload',
-        'pagination' => 'getPagination',
-        'errors' => 'getErrors',
-    ];
+        'total_records_amount' => 'getTotalRecordsAmount',
+        'total_pages' => 'getTotalPages',
+        'request_page' => 'getRequestPage',    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -110,7 +98,6 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     {
         return self::$attributeMap;
     }
-
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
@@ -157,9 +144,9 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['payload'] = isset($data['payload']) ? $data['payload'] : null;
-        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
-        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
+        $this->container['total_records_amount'] = isset($data['total_records_amount']) ? $data['total_records_amount'] : null;
+        $this->container['total_pages'] = isset($data['total_pages']) ? $data['total_pages'] : null;
+        $this->container['request_page'] = isset($data['request_page']) ? $data['request_page'] : null;
     }
 
     /**
@@ -186,71 +173,66 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets payload.
+     * Gets total_records_amount.
      *
-     * @return \Goletter\RakutenAPI\Models\Orders\OrdersList
+     * @return string
      */
-    public function getPayload()
+    public function getTotalRecordsAmount()
     {
-        return $this->container['payload'];
+        return $this->container['total_records_amount'];
     }
 
     /**
-     * Sets payload.
-     *
-     * @param \Goletter\RakutenAPI\Models\Orders\OrdersList $payload payload
+     * Sets total_records_amount.
      *
      * @return $this
      */
-    public function setPayload($payload)
+    public function setTotalRecordsAmount($total_records_amount)
     {
-        $this->container['payload'] = $payload;
+        $this->container['total_records_amount'] = $total_records_amount;
 
         return $this;
     }
 
     /**
-     * Gets pagination.
+     * Gets total_pages.
      *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
+     * @return string
      */
-    public function getPagination()
+    public function getTotalPages()
     {
-        return $this->container['pagination'];
+        return $this->container['total_pages'];
     }
 
     /**
-     * Sets pagination.
-     *
+     * Sets total_pages
      * @return $this
      */
-    public function setPagination($pagination)
+    public function setTotalPages($total_pages)
     {
-        $this->container['pagination'] = $pagination;
+        $this->container['total_pages'] = $total_pages;
 
         return $this;
     }
 
     /**
-     * Gets errors.
+     * Gets request_page.
      *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
+     * @return string
      */
-    public function getErrors()
+    public function getRequestPage()
     {
-        return $this->container['errors'];
+        return $this->container['request_page'];
     }
 
     /**
-     * Sets errors.
-     *
-     * @param \Goletter\RakutenAPI\Models\Orders\ErrorList $errors errors
+     * Sets request_page.
      *
      * @return $this
      */
-    public function setErrors($errors)
+    public function setRequestPage($requestPage)
     {
-        $this->container['errors'] = $errors;
+        $this->container['request_page'] = $requestPage;
 
         return $this;
     }

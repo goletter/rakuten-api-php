@@ -13,7 +13,7 @@ use Goletter\RakutenAPI\ObjectSerializer;
  *
  * @author   Stefan Neuhaus / ClouSale
  */
-class OrdersList implements ModelInterface, ArrayAccess
+class OrdersList implements ModelInterface, ArrayAccess, IterableType
 {
     const DISCRIMINATOR = null;
 
@@ -29,20 +29,14 @@ class OrdersList implements ModelInterface, ArrayAccess
      *
      * @var string[]
      */
-    protected static $swaggerTypes = [
-        'orders' => '\Goletter\YahooAPI\Models\Orders\Order',
-        'total_count' => 'int',
-    ];
+    protected static $swaggerTypes = [];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
      */
-    protected static $swaggerFormats = [
-        'orders' => null,
-        'total_count' => null,
-    ];
+    protected static $swaggerFormats = [];
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -70,30 +64,21 @@ class OrdersList implements ModelInterface, ArrayAccess
      *
      * @var string[]
      */
-    protected static $attributeMap = [
-        'orders' => 'OrderInfo',
-        'total_count' => 'TotalCount',
-    ];
+    protected static $attributeMap = [];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
-    protected static $setters = [
-        'orders' => 'setOrders',
-        'total_count' => 'setTotalCount',
-    ];
+    protected static $setters = [];
 
     /**
      * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
-    protected static $getters = [
-        'orders' => 'getOrders',
-        'total_count' => 'getTotalCount',
-    ];
+    protected static $getters = [];
 
     /**
      * Array of attributes where the key is the local name,
@@ -151,8 +136,6 @@ class OrdersList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['orders'] = isset($data['orders']) ? $data['orders'] : null;
-        $this->container['total_count'] = isset($data['total_count']) ? $data['total_count'] : null;
     }
 
     /**
@@ -163,10 +146,6 @@ class OrdersList implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (null === $this->container['orders']) {
-            $invalidProperties[] = "'orders' can't be null";
-        }
 
         return $invalidProperties;
     }
@@ -180,54 +159,6 @@ class OrdersList implements ModelInterface, ArrayAccess
     public function valid()
     {
         return 0 === count($this->listInvalidProperties());
-    }
-
-    /**
-     * Gets orders.
-     *
-     * @return \Goletter\YahooAPI\Models\Orders\OrderList
-     */
-    public function getOrders()
-    {
-        return $this->container['orders'];
-    }
-
-    /**
-     * Sets orders.
-     *
-     * @param \Goletter\YahooAPI\Models\Orders\OrderList $orders orders
-     *
-     * @return $this
-     */
-    public function setOrders($orders)
-    {
-        $this->container['orders'] = $orders;
-
-        return $this;
-    }
-
-    /**
-     * Gets next_token.
-     *
-     * @return string
-     */
-    public function getTotalCount()
-    {
-        return $this->container['total_count'];
-    }
-
-    /**
-     * Sets total_count.
-     *
-     * @param string $next_token when present and not empty, pass this string token in the next request to return the next response page
-     *
-     * @return $this
-     */
-    public function setTotalCount($total_count)
-    {
-        $this->container['total_count'] = $total_count;
-
-        return $this;
     }
 
     /**
@@ -298,5 +229,10 @@ class OrdersList implements ModelInterface, ArrayAccess
         }
 
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+    }
+
+    public function getSubClass()
+    {
+        return OrderList::class;
     }
 }

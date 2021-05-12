@@ -4,8 +4,15 @@ namespace Goletter\RakutenAPI\Models\Orders;
 use ArrayAccess;
 use Goletter\RakutenAPI\Models\ModelInterface;
 use Goletter\RakutenAPI\ObjectSerializer;
+/**
+ * OrdererModel Class Doc Comment.
+ *
 
-class Order implements ModelInterface, ArrayAccess
+ * @description A list of orders.
+ *
+ * @author   Stefan Neuhaus / ClouSale
+ */
+class OrdererModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -14,7 +21,7 @@ class Order implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = 'Order';
+    protected static $swaggerModelName = 'OrdererModel';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -22,16 +29,13 @@ class Order implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'order_id' => 'string',
-        'version' => 'int',
-        // 'original_order_id' => 'string',
-        // 'parent_order_id' => 'string',
-        'order_time' => 'string',
-        'order_status' => 'int',
-        'pay_status' => 'int',
-        'settle_status' => 'int',
-        'pay_type' => 'int',
-        'total_price' => 'string',
+        'zip_code1' => 'string',
+        'zip_code2' => 'string',
+        'prefecture' => 'string',
+        'city' => 'string',
+        'sub_address' => 'string',
+        'family_name' => 'string',
+        'email_address' => 'string',
     ];
 
     /**
@@ -40,16 +44,13 @@ class Order implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'order_id' => null,
-        'version' => null,
-        'original_order_id' => null,
-        'parent_order_id' => null,
-        'order_time' => null,
-        'order_status' => null,
-        'pay_status' => null,
-        'settle_status' => null,
-        'pay_type' => null,
-        'total_price' => null,
+        'zip_code1' => null,
+        'zip_code2' => null,
+        'prefecture' => null,
+        'city' => null,
+        'sub_address' => null,
+        'family_name' => null,
+        'email_address' => null,
     ];
 
     /**
@@ -79,16 +80,13 @@ class Order implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_id' => 'OrderId',
-        'version' => 'Version',
-        'original_order_id' => 'OriginalOrderId',
-        'parent_order_id' => 'ParentOrderId',
-        'order_time' => 'OrderTime',
-        'order_status' => 'OrderStatus',
-        'pay_status' => 'PayStatus',
-        'settle_status' => 'SettleStatus',
-        'pay_type' => 'PayType',
-        'total_price' => 'TotalPrice',
+        'zip_code1' => 'zipCode1',
+        'zip_code2' => 'zipCode2',
+        'prefecture' => 'prefecture',
+        'city' => 'city',
+        'sub_address' => 'subAddress',
+        'family_name' => 'familyName',
+        'email_address' => 'firstName',
     ];
 
     /**
@@ -97,16 +95,13 @@ class Order implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'order_id' => 'setOrderId',
-        'version' => 'setVersion',
-        'original_order_id' => 'setOriginalOrderId',
-        'parent_order_id' => 'setParentOrderId',
-        'order_time' => 'setOrderTime',
-        'order_status' => 'setOrderStatus',
-        'pay_status' => 'setPayStatus',
-        'settle_status' => 'setSettleStatus',
-        'pay_type' => 'setPayType',
-        'total_price' => 'setTotalPrice',
+        'zip_code1' => 'setZipCode1',
+        'zip_code2' => 'setZipCode2',
+        'prefecture' => 'setPrefecture',
+        'city' => 'setCity',
+        'sub_address' => 'setSubAddress',
+        'family_name' => 'setFamilyName',
+        'email_address' => 'setEmailAddress',
     ];
 
     /**
@@ -115,16 +110,13 @@ class Order implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'order_id' => 'getOrderId',
-        'version' => 'getVersion',
-        'original_order_id' => 'getOriginalOrderId',
-        'parent_order_id' => 'getParentOrderId',
-        'order_time' => 'getOrderTime',
-        'order_status' => 'getOrderStatus',
-        'pay_status' => 'getPayStatus',
-        'settle_status' => 'getSettleStatus',
-        'pay_type' => 'getPayType',
-        'total_price' => 'getTotalPrice',
+        'zip_code1' => 'getZipCode1',
+        'zip_code2' => 'getZipCode2',
+        'prefecture' => 'getPrefecture',
+        'city' => 'getCity',
+        'sub_address' => 'getSubAddress',
+        'family_name' => 'getFamilyName',
+        'email_address' => 'getEmailAddress',
     ];
 
     /**
@@ -183,16 +175,13 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
-        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
-        $this->container['original_order_id'] = isset($data['original_order_id']) ? $data['original_order_id'] : null;
-        $this->container['parent_order_id'] = isset($data['parent_order_id']) ? $data['parent_order_id'] : null;
-        $this->container['order_time'] = isset($data['order_time']) ? $data['order_time'] : null;
-        $this->container['order_status'] = isset($data['order_status']) ? $data['order_status'] : null;
-        $this->container['pay_status'] = isset($data['pay_status']) ? $data['pay_status'] : null;
-        $this->container['settle_status'] = isset($data['settle_status']) ? $data['settle_status'] : null;
-        $this->container['pay_type'] = isset($data['pay_type']) ? $data['pay_type'] : null;
-        $this->container['total_price'] = isset($data['total_price']) ? $data['total_price'] : null;
+        $this->container['zip_code1'] = isset($data['zip_code1']) ? $data['zip_code1'] : null;
+        $this->container['zip_code2'] = isset($data['zip_code2']) ? $data['zip_code2'] : null;
+        $this->container['prefecture'] = isset($data['prefecture']) ? $data['prefecture'] : null;
+        $this->container['city'] = isset($data['city']) ? $data['city'] : null;
+        $this->container['sub_address'] = isset($data['sub_address']) ? $data['sub_address'] : null;
+        $this->container['family_name'] = isset($data['family_name']) ? $data['family_name'] : null;
+        $this->container['email_address'] = isset($data['email_address']) ? $data['email_address'] : null;
     }
 
     /**
@@ -203,10 +192,6 @@ class Order implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (null === $this->container['order_id']) {
-            $invalidProperties[] = "'order_id' can't be null";
-        }
 
         return $invalidProperties;
     }
@@ -223,25 +208,20 @@ class Order implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets order_id.
-     *
-     * @return string
+     * @return mixed
      */
-    public function getOrderId()
+    public function getZipCode1()
     {
-        return $this->container['order_id'];
+        return $this->container['zip_code1'];
     }
 
     /**
-     * Sets order_id.
-     *
-     * @param string $order_id an order identifier, in 3-7-7 format
-     *
+     * @param $zip_code1
      * @return $this
      */
-    public function setOrderId($order_id)
+    public function setZipCode1($zip_code1)
     {
-        $this->container['order_id'] = $order_id;
+        $this->container['zip_code1'] = $zip_code1;
 
         return $this;
     }
@@ -249,18 +229,18 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * @return mixed
      */
-    public function getVersion()
+    public function getZipCode2()
     {
-        return $this->container['version'];
+        return $this->container['zip_code2'];
     }
 
     /**
-     * @param $version
+     * @param $zip_code2
      * @return $this
      */
-    public function setVersion($version)
+    public function setZipCode2($zip_code2)
     {
-        $this->container['version'] = $version;
+        $this->container['zip_code2'] = $zip_code2;
 
         return $this;
     }
@@ -268,18 +248,18 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * @return mixed
      */
-    public function getOriginalOrderId()
+    public function getPrefecture()
     {
-        return $this->container['original_order_id'];
+        return $this->container['prefecture'];
     }
 
     /**
-     * @param $original_order_id
+     * @param $prefecture
      * @return $this
      */
-    public function setOriginalOrderId($original_order_id)
+    public function setPrefecture($prefecture)
     {
-        $this->container['original_order_id'] = $original_order_id;
+        $this->container['prefecture'] = $prefecture;
 
         return $this;
     }
@@ -287,18 +267,18 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * @return mixed
      */
-    public function getParentOrderId()
+    public function getCity()
     {
-        return $this->container['parent_order_id'];
+        return $this->container['city'];
     }
 
     /**
-     * @param $parent_order_id
+     * @param $city
      * @return $this
      */
-    public function setParentOrderId($parent_order_id)
+    public function setCity($city)
     {
-        $this->container['parent_order_id'] = $parent_order_id;
+        $this->container['city'] = $city;
 
         return $this;
     }
@@ -306,18 +286,18 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * @return mixed
      */
-    public function getOrderTime()
+    public function getSubAddress()
     {
-        return $this->container['order_time'];
+        return $this->container['sub_address'];
     }
 
     /**
-     * @param $order_time
+     * @param $sub_address
      * @return $this
      */
-    public function setOrderTime($order_time)
+    public function setSubAddress($sub_address)
     {
-        $this->container['order_time'] = $order_time;
+        $this->container['sub_address'] = $sub_address;
 
         return $this;
     }
@@ -325,18 +305,18 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * @return mixed
      */
-    public function getOrderStatus()
+    public function getFamilyName()
     {
-        return $this->container['order_status'];
+        return $this->container['family_name'];
     }
 
     /**
-     * @param $order_status
+     * @param $family_name
      * @return $this
      */
-    public function setOrderStatus($order_status)
+    public function setFamilyName($family_name)
     {
-        $this->container['order_status'] = $order_status;
+        $this->container['family_name'] = $family_name;
 
         return $this;
     }
@@ -344,18 +324,18 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * @return mixed
      */
-    public function getPayStatus()
+    public function getFirstName()
     {
-        return $this->container['pay_status'];
+        return $this->container['first_name'];
     }
 
     /**
-     * @param $pay_status
+     * @param $first_name
      * @return $this
      */
-    public function setPayStatus($pay_status)
+    public function setFirstName($first_name)
     {
-        $this->container['pay_status'] = $pay_status;
+        $this->container['first_name'] = $first_name;
 
         return $this;
     }
@@ -363,56 +343,18 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * @return mixed
      */
-    public function getSettleStatus()
+    public function getEmailAddress()
     {
-        return $this->container['settle_status'];
+        return $this->container['email_address'];
     }
 
     /**
-     * @param $settle_status
+     * @param $email_address
      * @return $this
      */
-    public function setSettleStatus($settle_status)
+    public function setEmailAddress($email_address)
     {
-        $this->container['settle_status'] = $settle_status;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPayType()
-    {
-        return $this->container['pay_type'];
-    }
-
-    /**
-     * @param $pay_type
-     * @return $this
-     */
-    public function setPayType($pay_type)
-    {
-        $this->container['pay_type'] = $pay_type;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalPrice()
-    {
-        return $this->container['total_price'];
-    }
-
-    /**
-     * @param $total_price
-     * @return $this
-     */
-    public function setTotalPrice($total_price)
-    {
-        $this->container['total_price'] = $total_price;
+        $this->container['email_address'] = $email_address;
 
         return $this;
     }

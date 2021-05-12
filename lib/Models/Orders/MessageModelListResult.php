@@ -4,16 +4,15 @@ namespace Goletter\RakutenAPI\Models\Orders;
 use ArrayAccess;
 use Goletter\RakutenAPI\Models\ModelInterface;
 use Goletter\RakutenAPI\ObjectSerializer;
-
 /**
- * GetOrdersResponse Class Doc Comment.
+ * MessageModelListResult Class Doc Comment.
  *
 
- * @description The response schema for the getOrders operation.
+ * @description A list of orders.
  *
- * @author   Stefan Neuhaus / Yahoo
+ * @author   Stefan Neuhaus / ClouSale
  */
-class GetOrdersResponse implements ModelInterface, ArrayAccess
+class MessageModelListResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -22,7 +21,7 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = 'GetOrdersResponse';
+    protected static $swaggerModelName = 'MessageModelListResult';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -30,9 +29,12 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'payload' => '\Goletter\RakutenAPI\Models\Orders\OrdersList',
-        'pagination' => '\Goletter\RakutenAPI\Models\Orders\PaginationList',
-        'errors' => '\Goletter\RakutenAPI\Models\Orders\ErrorList',
+        'message_type' => 'string',
+        'message_code' => 'string',
+        'message' => 'string',
+        'order_number' => 'string',
+        'data_number' => 'int',
+        'shipping_detail_id' => 'string',
     ];
 
     /**
@@ -41,9 +43,12 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'payload' => null,
-        'pagination' => null,
-        'errors' => null,
+        'message_type' => null,
+        'message_code' => null,
+        'message' => null,
+        'order_number' => null,
+        'data_number' => null,
+        'shipping_detail_id' => null,
     ];
 
     /**
@@ -73,9 +78,12 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'payload' => 'orderNumberList',
-        'pagination' => 'PaginationResponseModel',
-        'errors' => 'MessageModelList',
+        'message_type' => 'messageType',
+        'message_code' => 'messageCode',
+        'message' => 'message',
+        'order_number' => 'orderNumber',
+        'data_number' => 'dataNumber',
+        'shipping_detail_id' => 'shippingDetailId',
     ];
 
     /**
@@ -84,9 +92,12 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'payload' => 'setPayload',
-        'pagination' => 'setPagination',
-        'errors' => 'setErrors',
+        'message_type' => 'setMessageType',
+        'message_code' => 'setMessageCode',
+        'message' => 'setMessage',
+        'order_number' => 'setOrderNumber',
+        'data_number' => 'setDataNumber',
+        'shipping_detail_id' => 'setShippingDetailId',
     ];
 
     /**
@@ -95,9 +106,12 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'payload' => 'getPayload',
-        'pagination' => 'getPagination',
-        'errors' => 'getErrors',
+        'message_type' => 'getMessageType',
+        'message_code' => 'getMessageCode',
+        'message' => 'getMessage',
+        'order_number' => 'getOrderNumber',
+        'data_number' => 'getDataNumber',
+        'shipping_detail_id' => 'getShippingDetailId',
     ];
 
     /**
@@ -110,7 +124,6 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     {
         return self::$attributeMap;
     }
-
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
@@ -157,9 +170,12 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['payload'] = isset($data['payload']) ? $data['payload'] : null;
-        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
-        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
+        $this->container['message_type'] = isset($data['message_type']) ? $data['message_type'] : null;
+        $this->container['message_code'] = isset($data['message_code']) ? $data['message_code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['order_number'] = isset($data['order_number']) ? $data['order_number'] : null;
+        $this->container['data_number'] = isset($data['data_number']) ? $data['data_number'] : null;
+        $this->container['shipping_detail_id'] = isset($data['shipping_detail_id']) ? $data['shipping_detail_id'] : null;
     }
 
     /**
@@ -186,71 +202,139 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets payload.
+     * Gets code.
      *
-     * @return \Goletter\RakutenAPI\Models\Orders\OrdersList
+     * @return string
      */
-    public function getPayload()
+    public function getMessageCode()
     {
-        return $this->container['payload'];
+        return $this->container['message_code'];
     }
 
     /**
-     * Sets payload.
+     * Sets code.
      *
-     * @param \Goletter\RakutenAPI\Models\Orders\OrdersList $payload payload
+     * @param string $code an error code that identifies the type of error that occurred
      *
      * @return $this
      */
-    public function setPayload($payload)
+    public function setMessageCode($messageCode)
     {
-        $this->container['payload'] = $payload;
+        $this->container['message_code'] = $messageCode;
 
         return $this;
     }
 
     /**
-     * Gets pagination.
+     * Gets message.
      *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
+     * @return string
      */
-    public function getPagination()
+    public function getMessage()
     {
-        return $this->container['pagination'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets pagination.
+     * Sets message.
+     *
+     * @param string $message a message that describes the error condition in a human-readable form
      *
      * @return $this
      */
-    public function setPagination($pagination)
+    public function setMessage($message)
     {
-        $this->container['pagination'] = $pagination;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets errors.
+     * Gets messageType.
      *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
+     * @return string
      */
-    public function getErrors()
+    public function getMessageType()
     {
-        return $this->container['errors'];
+        return $this->container['message_type'];
     }
 
     /**
-     * Sets errors.
+     * Sets messageType.
      *
-     * @param \Goletter\RakutenAPI\Models\Orders\ErrorList $errors errors
+     * @param string $details additional details that can help the caller understand or fix the issue
      *
      * @return $this
      */
-    public function setErrors($errors)
+    public function setMessageType($messageType)
     {
-        $this->container['errors'] = $errors;
+        $this->container['message_type'] = $messageType;
+
+        return $this;
+    }
+
+    /**
+     * Gets OrderNumber.
+     *
+     * @return string
+     */
+    public function getOrderNumber()
+    {
+        return $this->container['order_number'];
+    }
+
+    /**
+     * Sets OrderNumber.
+     *
+     * @return $this
+     */
+    public function setOrderNumber($orderNumber)
+    {
+        $this->container['order_number'] = $orderNumber;
+
+        return $this;
+    }
+
+    /**
+     * Gets DataNumber.
+     *
+     * @return string
+     */
+    public function getDataNumber()
+    {
+        return $this->container['data_number'];
+    }
+
+    /**
+     * Sets DataNumber.
+     *
+     * @return $this
+     */
+    public function setDataNumber($dataNumber)
+    {
+        $this->container['data_number'] = $dataNumber;
+
+        return $this;
+    }
+
+    /**
+     * Gets ShippingDetailId.
+     *
+     * @return string
+     */
+    public function getShippingDetailId()
+    {
+        return $this->container['shipping_detail_id'];
+    }
+
+    /**
+     * Sets ShippingDetailId.
+     *
+     * @return $this
+     */
+    public function setShippingDetailId($shippingDetailId)
+    {
+        $this->container['shipping_detail_id'] = $shippingDetailId;
 
         return $this;
     }

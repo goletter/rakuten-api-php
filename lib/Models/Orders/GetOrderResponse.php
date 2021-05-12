@@ -63,8 +63,8 @@ class GetOrderResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'payload' => 'Result',
-        'errors' => 'errors',
+        'payload' => 'OrderModelList',
+        'errors' => 'MessageModelList',
     ];
 
     /**
@@ -174,7 +174,7 @@ class GetOrderResponse implements ModelInterface, ArrayAccess
     /**
      * Gets payload.
      *
-     * @return \Goletter\YahooAPI\Models\Orders\OrdersList
+     * @return \Goletter\RakutenAPI\Models\Orders\OrdersList
      */
     public function getPayload()
     {
@@ -184,7 +184,7 @@ class GetOrderResponse implements ModelInterface, ArrayAccess
     /**
      * Sets payload.
      *
-     * @param \Goletter\YahooAPI\Models\Orders\OrdersList $payload payload
+     * @param \Goletter\RakutenAPI\Models\Orders\OrdersList $payload payload
      *
      * @return $this
      */
@@ -198,7 +198,7 @@ class GetOrderResponse implements ModelInterface, ArrayAccess
     /**
      * Gets errors.
      *
-     * @return \Goletter\YahooAPI\Models\Orders\ErrorList
+     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
      */
     public function getErrors()
     {
@@ -208,7 +208,7 @@ class GetOrderResponse implements ModelInterface, ArrayAccess
     /**
      * Sets errors.
      *
-     * @param \Goletter\YahooAPI\Models\Orders\ErrorList $errors errors
+     * @param \Goletter\RakutenAPI\Models\Orders\ErrorList $errors errors
      *
      * @return $this
      */

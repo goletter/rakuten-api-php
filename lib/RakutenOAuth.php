@@ -8,6 +8,6 @@ use GuzzleHttp\ClientInterface;
  * Class YahooOAuth
  * @package Goletter\RakutenAPI
  */
-class YahooOAuth {
+class RakutenOAuth {
 
 }

@@ -4,6 +4,6 @@ namespace Goletter\RakutenAPI;
 
 use Exception;
 
-class YahooOAuthException extends Exception
+class RakutenOAuthException extends Exception
 {
 }

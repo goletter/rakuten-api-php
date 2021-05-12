@@ -273,6 +273,8 @@ class ObjectSerializer
             }
 
             return $data;
+        } elseif (method_exists($class, 'getValue')) {
+            return $data;
         } else {
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;

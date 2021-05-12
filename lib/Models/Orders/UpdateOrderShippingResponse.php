@@ -5,15 +5,7 @@ use ArrayAccess;
 use Goletter\RakutenAPI\Models\ModelInterface;
 use Goletter\RakutenAPI\ObjectSerializer;
 
-/**
- * GetOrdersResponse Class Doc Comment.
- *
-
- * @description The response schema for the getOrders operation.
- *
- * @author   Stefan Neuhaus / Yahoo
- */
-class GetOrdersResponse implements ModelInterface, ArrayAccess
+class UpdateOrderShippingResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -22,7 +14,7 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = 'GetOrdersResponse';
+    protected static $swaggerModelName = 'UpdateOrderSubStatusResponse';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -30,10 +22,8 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'payload' => '\Goletter\RakutenAPI\Models\Orders\OrdersList',
-        'pagination' => '\Goletter\RakutenAPI\Models\Orders\PaginationList',
-        'errors' => '\Goletter\RakutenAPI\Models\Orders\ErrorList',
-    ];
+        'payload' => '\Goletter\RakutenAPI\Models\Feeds\MessageModelListResult',
+      ];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -42,8 +32,6 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      */
     protected static $swaggerFormats = [
         'payload' => null,
-        'pagination' => null,
-        'errors' => null,
     ];
 
     /**
@@ -73,10 +61,8 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'payload' => 'orderNumberList',
-        'pagination' => 'PaginationResponseModel',
-        'errors' => 'MessageModelList',
-    ];
+        'payload' => 'MessageModelList',
+        ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
@@ -85,8 +71,6 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'payload' => 'setPayload',
-        'pagination' => 'setPagination',
-        'errors' => 'setErrors',
     ];
 
     /**
@@ -96,9 +80,7 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'payload' => 'getPayload',
-        'pagination' => 'getPagination',
-        'errors' => 'getErrors',
-    ];
+     ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -110,7 +92,6 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     {
         return self::$attributeMap;
     }
-
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
@@ -158,8 +139,6 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['payload'] = isset($data['payload']) ? $data['payload'] : null;
-        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
-        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
     }
 
     /**
@@ -188,7 +167,7 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     /**
      * Gets payload.
      *
-     * @return \Goletter\RakutenAPI\Models\Orders\OrdersList
+     * @return \Goletter\AmazonSellingPartnerAPI\Models\Feeds\CreateFeedResult
      */
     public function getPayload()
     {
@@ -198,59 +177,13 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     /**
      * Sets payload.
      *
-     * @param \Goletter\RakutenAPI\Models\Orders\OrdersList $payload payload
+     * @param \Goletter\AmazonSellingPartnerAPI\Models\Feeds\CreateFeedResult $payload payload
      *
      * @return $this
      */
     public function setPayload($payload)
     {
         $this->container['payload'] = $payload;
-
-        return $this;
-    }
-
-    /**
-     * Gets pagination.
-     *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
-     */
-    public function getPagination()
-    {
-        return $this->container['pagination'];
-    }
-
-    /**
-     * Sets pagination.
-     *
-     * @return $this
-     */
-    public function setPagination($pagination)
-    {
-        $this->container['pagination'] = $pagination;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors.
-     *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors.
-     *
-     * @param \Goletter\RakutenAPI\Models\Orders\ErrorList $errors errors
-     *
-     * @return $this
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
 
         return $this;
     }

@@ -118,14 +118,13 @@ trait RakutenApiRequest
             if ('\SplFileObject' === $returnType) {
                 $content = $responseBody; //stream goes to serializer
             } else {
-                $content = $responseBody->getContents();
                 if (!in_array($returnType, ['string', 'integer', 'bool'])) {
-                    libxml_disable_entity_loader(true);
-                    $content = json_decode(json_encode(simplexml_load_string($content, 'SimpleXMLElement', LIBXML_NOCDATA)));
+                    $content = json_decode($responseBody);
                 }
             }
             // var_dump($content);
             // exit();
+
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),

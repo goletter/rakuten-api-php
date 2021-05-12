@@ -5,15 +5,7 @@ use ArrayAccess;
 use Goletter\RakutenAPI\Models\ModelInterface;
 use Goletter\RakutenAPI\ObjectSerializer;
 
-/**
- * GetOrdersResponse Class Doc Comment.
- *
-
- * @description The response schema for the getOrders operation.
- *
- * @author   Stefan Neuhaus / Yahoo
- */
-class GetOrdersResponse implements ModelInterface, ArrayAccess
+class PackageModelList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -22,7 +14,7 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $swaggerModelName = 'GetOrdersResponse';
+    protected static $swaggerModelName = 'PackageModelList';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -30,9 +22,8 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerTypes = [
-        'payload' => '\Goletter\RakutenAPI\Models\Orders\OrdersList',
-        'pagination' => '\Goletter\RakutenAPI\Models\Orders\PaginationList',
-        'errors' => '\Goletter\RakutenAPI\Models\Orders\ErrorList',
+        'basket_id' => 'string',
+        'item_model_list' => '\Goletter\RakutenAPI\Models\Orders\ItemsModelList',
     ];
 
     /**
@@ -41,9 +32,8 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $swaggerFormats = [
-        'payload' => null,
-        'pagination' => null,
-        'errors' => null,
+        'basket_id' => null,
+        'item_model_list' => null,
     ];
 
     /**
@@ -73,9 +63,8 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'payload' => 'orderNumberList',
-        'pagination' => 'PaginationResponseModel',
-        'errors' => 'MessageModelList',
+        'basket_id' => 'basketId',
+        'item_model_list' => 'ItemModelList',
     ];
 
     /**
@@ -84,9 +73,8 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'payload' => 'setPayload',
-        'pagination' => 'setPagination',
-        'errors' => 'setErrors',
+        'basket_id' => 'setBasketId',
+        'item_model_list' => 'setItemModelList',
     ];
 
     /**
@@ -95,9 +83,8 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'payload' => 'getPayload',
-        'pagination' => 'getPagination',
-        'errors' => 'getErrors',
+        'basket_id' => 'getBasketId',
+        'item_model_list' => 'getItemModelList',
     ];
 
     /**
@@ -110,7 +97,6 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     {
         return self::$attributeMap;
     }
-
 
     /**
      * Array of attributes to setter functions (for deserialization of responses).
@@ -157,9 +143,8 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['payload'] = isset($data['payload']) ? $data['payload'] : null;
-        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
-        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
+        $this->container['basket_id'] = isset($data['basket_id']) ? $data['basket_id'] : null;
+        $this->container['item_model_list'] = isset($data['item_model_list']) ? $data['item_model_list'] : null;
     }
 
     /**
@@ -186,71 +171,46 @@ class GetOrdersResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets payload.
+     * Gets basket_id.
      *
-     * @return \Goletter\RakutenAPI\Models\Orders\OrdersList
+     * @return string
      */
-    public function getPayload()
+    public function getBasketId()
     {
-        return $this->container['payload'];
+        return $this->container['basket_id'];
     }
 
     /**
-     * Sets payload.
+     * Sets basket_id.
      *
-     * @param \Goletter\RakutenAPI\Models\Orders\OrdersList $payload payload
+     * @param string $basket_id an order identifier, in 3-7-7 format
      *
      * @return $this
      */
-    public function setPayload($payload)
+    public function setBasketId($basket_id)
     {
-        $this->container['payload'] = $payload;
+        $this->container['basket_id'] = $basket_id;
 
         return $this;
     }
 
     /**
-     * Gets pagination.
+     * Gets item_model_list.
      *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
+     * @return string
      */
-    public function getPagination()
+    public function getItemModelList()
     {
-        return $this->container['pagination'];
+        return $this->container['item_model_list'];
     }
 
     /**
-     * Sets pagination.
-     *
+     * Sets item_model_list.
      * @return $this
      */
-    public function setPagination($pagination)
+    public function setItemModelList($item_model_list)
     {
-        $this->container['pagination'] = $pagination;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors.
-     *
-     * @return \Goletter\RakutenAPI\Models\Orders\ErrorList
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors.
-     *
-     * @param \Goletter\RakutenAPI\Models\Orders\ErrorList $errors errors
-     *
-     * @return $this
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
+        $this->container['item_model_list'] = $item_model_list;
 
         return $this;
     }
